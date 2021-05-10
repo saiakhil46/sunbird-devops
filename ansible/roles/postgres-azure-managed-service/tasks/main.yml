@@ -23,6 +23,7 @@
   with_items: "{{ db_name.db }}"
   async: 3600
   poll: 10
+  ignore_errors: True
 
 - name: Dump api manager database to a file
   postgresql_db:
