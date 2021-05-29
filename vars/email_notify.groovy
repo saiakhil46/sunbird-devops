@@ -8,7 +8,7 @@ def call(String email_list = "") {
             String ANSI_YELLOW = "\u001B[33m"
 
            if(email_list.length() > 0){
-                    emailext body: '''$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS: Check console output at $BUILD_URL to view the results.''', subject: '$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS!', to: email_list, attachLog: true, compressLog: true
+                    emailext body: '''$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS: Check console output at $BUILD_URL to view the results. This is demo''', subject: '$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS!', to: email_list, attachLog: true, compressLog: true
                     return
            }
             stage('email_notify') {
@@ -27,7 +27,7 @@ def call(String email_list = "") {
                 }
                 
                 if(env.GLOBAL_EMAIL_GROUP != null)
-                       emailext body: '''$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS: Check console output at $BUILD_URL to view the results.''', subject: '$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS!', to: env.GLOBAL_EMAIL_GROUP
+                       emailext body: '''$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS: Check console output at $BUILD_URL to view the results. This is demo''', subject: '$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS!', to: env.GLOBAL_EMAIL_GROUP
                 else
                     println ANSI_YELLOW + ANSI_BOLD + "Could not find global email group variable. Skipping email notification.." + ANSI_NORMAL
             }
