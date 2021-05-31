@@ -16,7 +16,7 @@ def call(String email_list = "") {
                     envDir = sh(returnStdout: true, script: "echo $JOB_NAME").split('/')[-3].trim()
                     email_group_name = envDir.toUpperCase() + "_EMAIL_GROUP"
                     email_group = evaluate "$email_group_name"
-                    emailext body: '''$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS: Check console output at $BUILD_URL to view the results.''', subject: '$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS!', to: email_group
+                    emailext body: '''$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS: Check console output at $BUILD_URL to view the results. This is demo''', subject: '$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS!', to: email_group
                     return
                 }
                 catch (MissingPropertyException ex) {
